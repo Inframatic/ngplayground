@@ -1,0 +1,3 @@
+function SimpleController($scope) {
+    $scope.interns = [{name:'Jesus Christ',industry:'comp sci'},{name:'GOD YWH', industry:'creator inc'}]
+}

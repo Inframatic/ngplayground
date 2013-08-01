@@ -3,15 +3,23 @@
 
  <head>
     <title>ngPlayground</title>
+    <script src="app/controllers/controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
  </head>
- <body data-ng-init="interns=[{name:'Jesus Christ',industry:'comp sci'},{name:'GOD YWH', industry:'creator inc'}]">
-    Name:
-    <br/>
-    <input type="text" data-ng-model="name"/>{{name}}
-    <br/>
-    <ul>
-        <li data-ng-repeat="intern in interns |filter:name| orderBy: 'industry'">{{intern.name}}-{{intern.industry}}</li>
-    </ul>
+ <body>
+    <div class="container" data-ng-controller="SimpleController">
+        Name:
+        <br/>
+        <input type="text" data-ng-model="name"/>   {{name}}
+        <br/>
+        <ul>
+            <li data-ng-repeat="intern in interns |filter:name| orderBy: 'industry'">
+                <img src="http://www.corporatetraveller.ca/assets/images/profile-placeholder.gif" />
+                <div class="nametitle">{{intern.name}}</div> </br>
+                 {{intern.industry}}
+            </li>
+        </ul>
+    </div>
 
     <script src="scripts/angular.min.js"></script>
  </body>
