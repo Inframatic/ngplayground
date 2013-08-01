@@ -4,10 +4,14 @@
  <head>
     <title>ngPlayground</title>
  </head>
- <body>
-    <div class="container">
-        Name: <input type="text" ng-model="name" /> {{name}}
-    </div>
+ <body data-ng-init="interns=[{name:'Jesus Christ',industry:'comp sci'},{name:'GOD YWH', industry:'creator inc'}]">
+    Name:
+    <br/>
+    <input type="text" data-ng-model="name"/>{{name}}
+    <br/>
+    <ul>
+        <li data-ng-repeat="intern in interns |filter:name| orderBy: 'industry'">{{intern.name}}-{{intern.industry}}</li>
+    </ul>
 
     <script src="scripts/angular.min.js"></script>
  </body>
