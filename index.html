@@ -13,26 +13,26 @@
         <br/>
         <br/>
         <ul>
-                Filter by: <br>
-                Company Name:  <input type="text" data-ng-model="name"/> </br>
-                Industry: <input type="text" data-ng-model="industry"/> <br>
-                <input type="text" data-ng-model="keyworddescription"/> <br>
-                <input type="text" data-ng-model="name"/>
+                <br>
+                <input type="text" data-ng-model="location" placeholder="Location"/> <br>
+                <input type="text" data-ng-model="name" placeholder="Company Name"/> </br>
+                <input type="text" data-ng-model="industry" placeholder="Industry"/> <br>
+                <input type="text" data-ng-model="keyworddescription" placeholder="Keyword"/> <br>
+                <select ng-model="intern" ng-options="status.paidvolunteer for status in statusList | orderBy:'applicationStatus'">
+                    <option value="">Paid or Volunteer</option>
+                </select>
 
                  {{name}} <br>
                 <input type="checkbox" ng-model="paid" ng-true-value="yes" ng-false-value="no"> Paid <br>
-                
-                    <select ng-model="intern" ng-options="status.applicationStatus for status in statusList | orderBy:'applicationStatus'">
-                    <option value="">Application Status</option>
-                    </select>
         </ul>
+        
         <ul>
         <hr/>
-            <li data-ng-repeat="item in list |filter:name| filter:paid | filter:intern| filter:location| orderBy: 'industry'">
+            <li data-ng-repeat="item in list |filter:name| filter:paid | filter:intern| filter:industry| filter:location| filter:keyworddescription">
                 <img src="http://www.corporatetraveller.ca/assets/images/profile-placeholder.gif" />
                     <div class="nametitle">{{item.name}}</div> <br>
                     {{item.industry}} <br>
-                    Paid: {{item.paid}}<br>
+                    Paid or Volunteer: {{item.paidvolunteer}}<br>
                     Applied: {{item.applicationStatus}}
                     {{status.ApplicationStatus}}
             </li>
