@@ -4,23 +4,37 @@
  <head>
     <title>ngPlayground</title>
     <script src="app/controllers/controller.js"></script>
+    <script src="app/modules/module1.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
  </head>
  <body>
-    <div class="container" data-ng-controller="SimpleController">
-        Name:
+    <div class="container" data-ng-controller="BusinessCtrl">
+        
         <br/>
-        <input type="text" data-ng-model="name"/>   {{name}}
         <br/>
         <ul>
-                <input type="checkbox" ng-model="intern.paid"> Paid
+                Filter by: <br>
+                Company Name:  <input type="text" data-ng-model="name"/> </br>
+                Industry: <input type="text" data-ng-model="industry"/> <br>
+                <input type="text" data-ng-model="keyworddescription"/> <br>
+                <input type="text" data-ng-model="name"/>
+
+                 {{name}} <br>
+                <input type="checkbox" ng-model="paid" ng-true-value="yes" ng-false-value="no"> Paid <br>
+                
+                    <select ng-model="intern" ng-options="status.applicationStatus for status in statusList | orderBy:'applicationStatus'">
+                    <option value="">Application Status</option>
+                    </select>
         </ul>
         <ul>
-            <li data-ng-repeat="intern in interns |filter:name| orderBy: 'industry'">
+        <hr/>
+            <li data-ng-repeat="item in list |filter:name| filter:paid | filter:intern| filter:location| orderBy: 'industry'">
                 <img src="http://www.corporatetraveller.ca/assets/images/profile-placeholder.gif" />
-                    <div class="nametitle">{{intern.name}}</div> <br>
-                    {{intern.industry}} <br>
-                    {{intern.paid}}
+                    <div class="nametitle">{{item.name}}</div> <br>
+                    {{item.industry}} <br>
+                    Paid: {{item.paid}}<br>
+                    Applied: {{item.applicationStatus}}
+                    {{status.ApplicationStatus}}
             </li>
         </ul>
     </div>
